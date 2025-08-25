@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FarmConnect Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #d0f0c0, #f5fff5);
+      color: #2e7d32;
+    }
+
+    header {
+      background: linear-gradient(to right, #4caf50, #81c784);
+      padding: 20px 40px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      font-size: 16px;
+      font-style: italic;
+      margin: 5px 0 0;
+    }
+
+    .dashboard-container {
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0, 100, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 100, 0, 0.3);
+    }
+
+    .card i {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #66bb6a;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      font-size: 20px;
+      color: #2e7d32;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 14px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 300px;
+      font-size: 14px;
+      background-color: #f0f8f0;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 24px;
+      }
+    }
+
+    .card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌾 FarmConnect Dashboard</h1>
+    <p>Smart Tools for Smarter Farming</p>
+  </header>
+
+  <div class="dashboard-container">
+
+    <a href="{{ url_for('recommendation') }}" class="card-link">
+      <div class="card">
+        <i class="fas fa-seedling"></i>
+        <h3>Crop Recommendation</h3>
+        <p>Get AI-based crop suggestions based on your soil and season.</p>
+      </div>
+    </a>
+<a href="{{ url_for('price_analysis') }}" class="card-link">
+  <div class="card">
+    <i class="fas fa-chart-line"></i>
+    <h3>Price Analysis</h3>
+    <p>Visualize crop market trends by district and crop type.</p>
+  </div>
+</a>
+
+
+<a href="{{ url_for('hub') }}" class="card-link">
+  <div class="card">
+    <i class="fas fa-book-open"></i>
+    <h3>Agri Knowledge Hub</h3>
+    <p>Explore tutorials, tips, and government schemes for farmers.</p>
+  </div>
+</a>
+
+
+    <a href="{{ url_for('logout') }}" class="card-link">
+      <div class="card">
+        <i class="fas fa-sign-out-alt"></i>
+        <h3>Logout</h3>
+        <p>Securely log out of your FarmConnect account.</p>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    &copy; 2025 FarmConnect. Growing the future together 🌱
+  </div>
+
+</body>
+</html>

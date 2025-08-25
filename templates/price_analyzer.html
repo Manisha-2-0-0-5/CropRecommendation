@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop Price Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    body {
+      background: url("{{ url_for('static', filename='field.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      position: relative;
+      color: #2e7d32;
+      backdrop-filter: brightness(1.2) saturate(1.2);
+    }
+
+    .overlay {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(to bottom right, #f1f8e9, #e8f5e9);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 800px;
+      margin: 50px auto;
+      box-shadow: 0 12px 40px rgba(34, 139, 34, 0.3);
+    }
+
+    h2, h4 {
+      color: #1b5e20;
+      font-weight: bold;
+    }
+
+    label {
+      font-weight: 500;
+    }
+
+    .btn-analyze {
+      background-color: #66bb6a;
+      color: white;
+      padding: 14px 20px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-analyze:hover {
+      background-color: #388e3c;
+      transform: scale(1.03);
+    }
+
+    .btn-back {
+      background-color: transparent;
+      color: #388e3c;
+      font-size: 20px;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-back:hover {
+      color: #2c6e2f;
+      transform: scale(1.05);
+    }
+
+    .table th {
+      background: #a5d6a7;
+    }
+
+    .table td {
+      background-color: #f1f8e9;
+    }
+
+    .form-check-label {
+      color: #388e3c;
+      font-weight: 500;
+    }
+
+    .header-icon {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 10px;
+    }
+
+    .title-container {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .alert-danger {
+      background-color: #ffcdd2;
+      border-color: #ef9a9a;
+      color: #b71c1c;
+      font-weight: bold;
+    }
+
+    img.img-fluid {
+      border: 2px solid #81c784;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+    }
+  </style>
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="title-container">
+      <img src="{{ url_for('static', filename='crop_icon.png') }}" alt="Crop Icon" class="header-icon">
+      <h2>🌱 Crop Price Analysis</h2>
+    </div>
+  <!-- Back Button -->
+    <a href="{{ url_for('dashboard') }}" class="btn-back mb-4">
+      <i class="fas fa-arrow-left"></i> <img src="{{ url_for('static', filename='crop1.jpg') }}" width="50" height="50"> Back to Dashboard
+    </a>
+    
+    <form method="POST" action="/price-analysis">
+      <div class="form-group">
+        <label for="district">Select District</label>
+        <select class="form-control" id="district" name="district" required>
+          {% for d in districts %}
+            <option value="{{ d }}" {% if d == selected_district %}selected{% endif %}>{{ d }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Select Crops</label>
+        <div class="row">
+          {% for crop in crops %}
+          <div class="col-md-6">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="crops" value="{{ crop }}"
+                     id="{{ crop }}" {% if crop in selected_crops %}checked{% endif %}>
+              <label class="form-check-label" for="{{ crop }}">{{ crop }}</label>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-analyze btn-block mt-4">Analyze Prices</button>
+    </form>
+
+    {% if error %}
+      <div class="alert alert-danger mt-4">{{ error }}</div>
+    {% endif %}
+
+  {% if chart %}
+  <hr>
+  <h4 class="mt-4">📊 Price Comparison Chart</h4>
+  <img src="{{ chart }}" class="img-fluid mt-3" alt="Price Chart">
+
+  <div class="mt-3 d-flex justify-content-center align-items-center">
+    <span class="mr-2" style="display: inline-block; width: 20px; height: 20px; background-color: red; border-radius: 4px;"></span>
+    <span class="mr-4">High Price</span>
+    <span class="mr-2" style="display: inline-block; width: 20px; height: 20px; background-color: lightblue; border-radius: 4px;"></span>
+    <span>Low Price</span>
+  </div>
+{% endif %}
+
+  </div>
+</body>
+</html>

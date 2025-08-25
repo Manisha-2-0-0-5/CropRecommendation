@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FarmConnect - Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0, 128, 0, 0.5), rgba(0, 128, 0, 0.5)),
+                  url('agri.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 50px 40px;
+      border-radius: 25px;
+      box-shadow: 0 10px 40px rgba(0, 100, 0, 0.4);
+      max-width: 430px;
+      width: 100%;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 10px;
+      color: #2e7d32;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-group i {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      color: #66bb6a;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px 12px 40px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus {
+      border-color: #66bb6a;
+      outline: none;
+      box-shadow: 0 0 5px rgba(102, 187, 106, 0.5);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, #4caf50, #66bb6a);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #388e3c, #4caf50);
+      transform: scale(1.02);
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    a {
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+.main-header {
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.main-header h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.main-header p {
+  font-size: 18px;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+  </style>
+</head>
+<body>
+<header class="main-header">
+  <h1>🌾 Welcome to FarmConnect</h1>
+  <p>Your Gateway to Smart Farming Solutions</p>
+</header>
+
+  <div class="login-container">
+    <div class="logo">🌿</div>
+    <h2>FarmConnect Login</h2>
+    <form action="/login" method="POST">
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+    <div class="footer-text">
+  New to FarmConnect? <a href="{{ url_for('signup') }}">Create an account</a>
+</div>
+
+  </div>
+
+</body>
+</html>
