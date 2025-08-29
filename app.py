@@ -34,7 +34,7 @@ with app.app_context():
     db.create_all()
 
 # Initialize Tamil Nadu Agro Expert and Price Analyzer
-data_path = r"C:\Users\manis\Downloads\11.csv"
+data_path = '11.csv'
 analyzer = PriceAnalyze(data_path)
 expert = TamilNaduAgroExpert()
 
