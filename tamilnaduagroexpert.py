@@ -14,9 +14,9 @@ class TamilNaduAgroExpert:
             self.le_duration = LabelEncoder()
 
             # Load datasets
-            self.crops = pd.read_csv(r"C:\Users\manis\Downloads\top15_tamilnadu_crops.csv")
-            self.rainfall = pd.read_csv(r"C:\Users\manis\Downloads\final_rainfall_2021_25.csv")
-            self.nutrients = pd.read_csv(r"C:\Users\manis\Downloads\crop_nutrients.csv")
+            self.crops = pd.read_csv("top15_tamilnadu_crops.csv")
+            self.rainfall = pd.read_csv("final_rainfall_2021_25.csv")
+            self.nutrients = pd.read_csv("crop_nutrients.csv")
 
             # Clean and prepare the data
             self._clean_data()
